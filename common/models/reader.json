@@ -1,0 +1,45 @@
+{
+  "name": "reader",
+  "plural": "readers",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "profile": {
+      "type": "string"
+    },
+    "userPhoto": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "requests": {
+      "type": "hasMany",
+      "model": "request",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "libraries": {
+      "type": "hasMany",
+      "model": "library",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

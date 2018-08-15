@@ -1,0 +1,60 @@
+{
+  "name": "library",
+  "plural": "libraries",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "coordinates": {
+      "type": "geopoint"
+    },
+    "serviceOptions": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "available": {
+      "type": "boolean",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "books": {
+      "type": "hasMany",
+      "model": "book",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "reader": {
+      "type": "belongsTo",
+      "model": "reader",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

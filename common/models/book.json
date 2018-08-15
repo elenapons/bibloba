@@ -1,0 +1,63 @@
+{
+  "name": "book",
+  "plural": "books",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "ISBN": {
+      "type": "number",
+      "required": true
+    },
+    "libraryLocation": {
+      "type": "string"
+    },
+    "available": {
+      "type": "boolean",
+      "required": true
+    },
+    "serviceOptions": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {
+    "requests": {
+      "type": "hasMany",
+      "model": "request",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "library": {
+      "type": "belongsTo",
+      "model": "library",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

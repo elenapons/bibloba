@@ -1,0 +1,55 @@
+{
+  "name": "request",
+  "plural": "requests",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "startDate": {
+      "type": "date",
+      "required": true
+    },
+    "dueDate": {
+      "type": "date",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "required": true
+    },
+    "requestDate": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "book": {
+      "type": "belongsTo",
+      "model": "book",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "reader",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
