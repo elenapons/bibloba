@@ -11,12 +11,24 @@
       "type": "string",
       "required": true
     },
-    "author": {
+    "authors": {
+      "type": ["string"],
+      "required": false
+    },
+    "publishedDate":{
       "type": "string",
-      "required": true
+      "required": false
+    },
+    "publisher":{
+      "type": "string",
+      "required": false
+    },
+    "imageLink":{
+      "type": "string",
+      "required": false
     },
     "ISBN": {
-      "type": "number",
+      "type": "string",
       "required": true
     },
     "libraryLocation": {
@@ -24,7 +36,8 @@
     },
     "available": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": true
     },
     "serviceOptions": {
       "type": [
