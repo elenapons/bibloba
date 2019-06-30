@@ -1,4 +1,5 @@
 var path = require('path');
+var fs = require("fs");
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var ReactRootPlugin = require("html-webpack-react-root-plugin");
@@ -37,12 +38,30 @@ module.exports = {
         { loader: "css-loader" }
       ]
     },
-  {
-    test: /\.jpg$/,
-    use: [
-      { loader: "copy-loader" }
-    ]
-  }]
+    {
+      test: /\.less$/,
+      use: [{
+        loader: 'style-loader' // creates style nodes from JS strings
+      }, {
+        loader: 'css-loader', // translates CSS into CommonJS
+        options: {sourceMap: true}
+      }, {
+      //   loader: "postcss"
+      // }, {
+        loader: 'less-loader', // compiles Less to CSS
+        options: {
+          sourceMap: true,
+          javascriptEnabled: true,
+          modifyVars: JSON.parse(fs.readFileSync(path.join(__dirname, './client/theme.json')))
+        }
+      }] 
+    },
+    {
+      test: /\.jpg$/,
+      use: [
+        { loader: "copy-loader" }
+      ]
+    }]
   },
   plugins: [
     new webpack.DefinePlugin({
