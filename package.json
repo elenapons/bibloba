@@ -35,7 +35,7 @@
     "isbndbjs": "^1.0.2",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
-    "loopback": "^3.19.0",
+    "loopback": "^3.25.1",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.0.0",
     "loopback-connector-mongodb": "^1.18.1",
